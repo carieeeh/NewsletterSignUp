@@ -6,19 +6,17 @@ const WelcomeScreen = ({ navigation }) => {
     navigation.navigate("Subscribe");
   }
 
-  // Add welcome screen code here.
   return (
-    <View flex={1}>
-      <View style={styles.body}>
-        <Image
-          source={require("../assets/little-lemon-logo.png")}
-          style={styles.image}
-          resizeMode="contain"
-        />
-        <Text style={styles.text}>
-          Little Lemon, your local{"\n"}Mediterranean Bistro
-        </Text>
-      </View>
+    <View style={styles.body}>
+      <Image
+        source={require("../assets/little-lemon-logo.png")}
+        style={styles.image}
+        resizeMode="contain"
+      />
+      <Text style={styles.text}>
+        Little Lemon, {"\n"} Your Local Mediterranean Bistro
+      </Text>
+
       <TouchableOpacity
         style={styles.button}
         onPress={onNewsletterButtonPressed}
@@ -35,6 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
+    backgroundColor: "#FFF",
   },
   image: {
     width: 250,
@@ -42,20 +41,22 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 24,
     textAlign: "center",
+    color: "#495E57",
   },
   button: {
-    backgroundColor: "#1E6738",
+    backgroundColor: "#495E57",
     color: "white",
     borderRadius: 10,
     margin: 20,
-    padding: 10,
+    padding: 20,
     alignSelf: "stretch",
   },
   buttonText: {
     color: "#fff",
     textAlign: "center",
+    fontWeight: "bold",
   },
 });
 
