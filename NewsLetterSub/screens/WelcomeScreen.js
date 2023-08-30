@@ -1,87 +1,62 @@
 import * as React from "react";
-import {
-  Image,
-  Text,
-  View,
-  StyleSheet,
-  Pressable,
-  ScrollView,
-} from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const WelcomeScreen = ({ navigation }) => {
+  function onNewsletterButtonPressed() {
+    navigation.navigate("Subscribe");
+  }
+
   // Add welcome screen code here.
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.secondContainer}>
-        <Text style={styles.imgText}>LITTLE </Text>
-        <View style={styles.imgWraper}>
-          <Image
-            style={styles.img}
-            source={require("../logo.png")}
-            resizeMode="contain"
-            accessible={true}
-            accessibilityLabel={"Little Lemon Logo"}
-          />
-        </View>
-        <Text style={styles.imgText}> LEMON</Text>
+    <View flex={1}>
+      <View style={styles.body}>
+        <Image
+          source={require("../assets/little-lemon-logo.png")}
+          style={styles.image}
+          resizeMode="contain"
+        />
+        <Text style={styles.text}>
+          Little Lemon, your local{"\n"}Mediterranean Bistro
+        </Text>
       </View>
-      <Text style={styles.description}>
-        Little Lemon, Your local Mediterraniene Bistro
-      </Text>
-      <Pressable
-        onPress={() => {
-          navigation.navigate("Subscribe");
-        }}
-        style={styles.newsletterButton}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={onNewsletterButtonPressed}
       >
         <Text style={styles.buttonText}>Newsletter</Text>
-      </Pressable>
-    </ScrollView>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default WelcomeScreen;
-
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
-    backgroundColor: "white",
-  },
-  secondContainer: {
-    marginTop: 100,
-  },
-  description: {
-    marginTop: 60,
-    fontSize: 24,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-  imgText: {
-    textAlign: "center",
-    fontWeight: "500",
-    fontSize: 30,
-    color: "#495E57",
-  },
-  imgWraper: {
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
-  img: {
-    height: 120,
-    width: 120,
+  image: {
+    width: 250,
+    height: 250,
   },
-  newsletterButton: {
-    fontSize: 22,
-    padding: 5,
-    marginTop: 170,
-    margin: 20,
-    backgroundColor: "#495E57",
-    borderColor: "#495E57",
-    borderWidth: 2,
+  text: {
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+  },
+  button: {
+    backgroundColor: "#1E6738",
+    color: "white",
     borderRadius: 10,
+    margin: 20,
+    padding: 10,
+    alignSelf: "stretch",
   },
   buttonText: {
-    color: "white",
+    color: "#fff",
     textAlign: "center",
-    fontSize: 15,
   },
 });
+
+export default WelcomeScreen;
