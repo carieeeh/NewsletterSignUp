@@ -33,7 +33,7 @@ To add React Navigation to a React Native project which uses Expo, follow these 
 
 Screenshots
 
-![alt text](C:\Users\Administrator\Documents\GitHub\NewsletterSignUp\WelcomeScreen.jpg)
-![alt text](C:\Users\Administrator\Documents\GitHub\NewsletterSignUp\SubscriptionScreen.jpg)
-![alt text](C:\Users\Administrator\Documents\GitHub\NewsletterSignUp\Alert1.jpg)
-![alt text](C:\Users\Administrator\Documents\GitHub\NewsletterSignUp\Alert2.jpg)
+![alt text](WelcomeScreen.jpg)
+![alt text](SubscriptionScreen.jpg)
+![alt text](Alert1.jpg)
+![alt text](Alert2.jpg)
