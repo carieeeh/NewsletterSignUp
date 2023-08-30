@@ -1,17 +1,17 @@
 import * as React from "react";
 import {
   View,
+  Text,
   StyleSheet,
   Image,
-  Text,
   TextInput,
-  TouchableOpacity,
   Alert,
+  TouchableOpacity,
 } from "react-native";
 import { validateEmail } from "../utils";
 
 const SubscribeScreen = () => {
-  const [text, onChangeText] = React.useState("hello@example.com");
+  const [text, onChangeText] = React.useState();
 
   function onSubscribeButtonPressed() {
     if (!validateEmail(text)) {
@@ -20,8 +20,6 @@ const SubscribeScreen = () => {
       return Alert.alert("Thanks for subscribing, stay tuned!");
     }
   }
-
-  // Add subscribe screen code here
   return (
     <View style={styles.body}>
       <Image
@@ -33,11 +31,12 @@ const SubscribeScreen = () => {
       <Text style={styles.text}>
         Subscribe to our Newsletter for our{"\n"}latest delicious recipes!
       </Text>
-
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
+        placeholder={"Email"}
+        keyboardType={"email-address"}
       ></TextInput>
 
       <TouchableOpacity
@@ -75,16 +74,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   button: {
-    backgroundColor: "#1E6738",
+    backgroundColor: "#F4CE14",
     color: "white",
     borderRadius: 10,
     marginTop: 20,
-    padding: 10,
+    padding: 20,
     alignSelf: "stretch",
   },
   buttonText: {
-    color: "#fff",
+    color: "#495E57",
     textAlign: "center",
+    fontWeight: "bold",
   },
 });
 
