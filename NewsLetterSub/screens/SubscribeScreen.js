@@ -1,114 +1,91 @@
 import * as React from "react";
 import {
-  Image,
-  Text,
   View,
   StyleSheet,
-  Pressable,
-  Alert,
+  Image,
+  Text,
   TextInput,
-  ScrollView,
-  KeyboardAvoidingView,
+  TouchableOpacity,
+  Alert,
 } from "react-native";
-import { validateEmail, ValidateEmail } from "../utils";
+import { validateEmail } from "../utils";
 
 const SubscribeScreen = () => {
-  // Add subscribe screen code here
-  const [email, setEmail] = React.useState("");
+  const [text, onChangeText] = React.useState("hello@example.com");
 
+  function onSubscribeButtonPressed() {
+    if (!validateEmail(text)) {
+      return Alert.alert("Error", "Invalid Email");
+    } else {
+      return Alert.alert("Thanks for subscribing, stay tuned!");
+    }
+  }
+
+  // Add subscribe screen code here
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-      keyboardVerticalOffset={90}
-    >
-      <ScrollView>
-        <View style={styles.imgWraper}>
-          <Image
-            style={styles.img}
-            source={require("../logo.png")}
-            resizeMode="contain"
-            accessible={true}
-            accessibilityLabel={"Little Lemon gray Logo"}
-          />
-        </View>
-        <Text style={styles.description}>
-          Subscribe to our newsletter for our latest delicious recipes!{" "}
-        </Text>
-        <TextInput
-          style={styles.emailInput}
-          placeholder="Type your email"
-          keyboardType={"email-address"}
-          value={email}
-          onChangeText={setEmail}
-        />
-        {validateEmail(email) ? (
-          <Pressable
-            style={styles.subscribeButton}
-            backgroundColor="#495E57"
-            borderColor="#495E57"
-            onPress={() => {
-              Alert.alert("Thanks for subscribing, stay tuned!");
-            }}
-          >
-            <Text style={styles.buttonText}>Subscribe</Text>
-          </Pressable>
-        ) : (
-          <Pressable
-            style={styles.subscribeButton}
-            disabled="true"
-            backgroundColor="#b7b7b7"
-            borderColor="#b7b7b7"
-          >
-            <Text style={styles.buttonText}>Subscribe</Text>
-          </Pressable>
-        )}
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <View style={styles.body}>
+      <Image
+        source={require("../assets/little-lemon-logo-grey.png")}
+        resizeMode="contain"
+        style={styles.image}
+      />
+
+      <Text style={styles.text}>
+        Subscribe to our Newsletter for our{"\n"}latest delicious recipes!
+      </Text>
+
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+      ></TextInput>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={onSubscribeButtonPressed}
+      >
+        <Text style={styles.buttonText}>Subscribe</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default SubscribeScreen;
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-  description: {
-    marginTop: 60,
-    paddingHorizontal: 15,
-    fontSize: 22,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-  imgWraper: {
-    marginTop: 40,
+  body: {
+    padding: 20,
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
-  img: {
-    height: 120,
-    width: 120,
-    tintColor: "#495E57",
+  image: {
+    height: 100,
+    margin: 20,
   },
-  emailInput: {
+  text: {
     fontSize: 18,
-    padding: 8,
-    margin: 20,
-    borderColor: "#495E57",
-    borderWidth: 2,
-    borderRadius: 10,
+    textAlign: "center",
   },
-  subscribeButton: {
-    fontSize: 22,
-    padding: 8,
-    margin: 20,
-    borderWidth: 2,
+  input: {
+    height: 40,
+    marginTop: 20,
+    borderWidth: 1,
+    padding: 10,
     borderRadius: 10,
+    alignSelf: "stretch",
+    backgroundColor: "#fff",
+  },
+  button: {
+    backgroundColor: "#1E6738",
+    color: "white",
+    borderRadius: 10,
+    marginTop: 20,
+    padding: 10,
+    alignSelf: "stretch",
   },
   buttonText: {
-    color: "white",
+    color: "#fff",
     textAlign: "center",
-    fontSize: 15,
   },
 });
+
+export default SubscribeScreen;
