@@ -1,93 +1,87 @@
-import React, { useState } from "react";
+import * as React from "react";
 import {
-  ScrollView,
-  Text,
-  StyleSheet,
-  KeyboardAvoidingView,
-  Platform,
   Image,
+  Text,
   View,
+  StyleSheet,
   Pressable,
+  ScrollView,
 } from "react-native";
 
-export default function WelcomeScreen({ navigation }) {
+const WelcomeScreen = ({ navigation }) => {
+  // Add welcome screen code here.
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <ScrollView style={styles.container} keyboardDismissMode="on-drag">
-        <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-        <View style={styles.headerWrapper}>
+    <ScrollView style={styles.container}>
+      <View style={styles.secondContainer}>
+        <Text style={styles.imgText}>LITTLE </Text>
+        <View style={styles.imgWraper}>
           <Image
-            style={styles.logo}
-            source={require("../img/littleLemonLogo.png")}
+            style={styles.img}
+            source={require("../logo.png")}
             resizeMode="contain"
             accessible={true}
-            accessibilityLabel={"Logo Photo"}
+            accessibilityLabel={"Little Lemon Logo"}
           />
         </View>
-
-        <Text style={styles.regularText}>
-          Little Lemon {"\n"}Your Local Mediterranean Bistro
-        </Text>
-
-        <Pressable
-          onPress={() => navigation.navigate("Subscribe")}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Newsletter</Text>
-        </Pressable>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        <Text style={styles.imgText}> LEMON</Text>
+      </View>
+      <Text style={styles.description}>
+        Little Lemon, Your local Mediterraniene Bistro
+      </Text>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("Subscribe");
+        }}
+        style={styles.newsletterButton}
+      >
+        <Text style={styles.buttonText}>Newsletter</Text>
+      </Pressable>
+    </ScrollView>
   );
-}
+};
+
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
   },
-  headerText: {
-    paddingRight: 10,
-    paddingLeft: 10,
-    paddingTop: 30,
-    paddingBottom: 10,
-    fontSize: 30,
-    color: "black",
-    textAlign: "center",
-  },
-  regularText: {
-    fontSize: 24,
-    padding: 20,
-    marginVertical: 8,
-    color: "black",
-    textAlign: "center",
-  },
-  headerWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    margin: 10,
-  },
-  logo: {
-    width: 150,
-    height: 300,
+  secondContainer: {
     marginTop: 100,
   },
-  button: {
+  description: {
+    marginTop: 60,
+    fontSize: 24,
+    fontWeight: "600",
+    textAlign: "center",
+  },
+  imgText: {
+    textAlign: "center",
+    fontWeight: "500",
+    fontSize: 30,
+    color: "#495E57",
+  },
+  imgWraper: {
+    alignItems: "center",
+  },
+  img: {
+    height: 120,
+    width: 120,
+  },
+  newsletterButton: {
     fontSize: 22,
-    padding: 10,
-    marginVertical: 8,
-    margin: 100,
-    backgroundColor: "#F4CE14",
-    borderColor: "#F4CE14",
+    padding: 5,
+    marginTop: 170,
+    margin: 20,
+    backgroundColor: "#495E57",
+    borderColor: "#495E57",
     borderWidth: 2,
     borderRadius: 10,
   },
   buttonText: {
-    color: "black",
+    color: "white",
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 15,
   },
 });
