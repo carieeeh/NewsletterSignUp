@@ -33,7 +33,7 @@ To add React Navigation to a React Native project which uses Expo, follow these 
 
 Screenshots
 
-![alt text](WelcomeScreen.jpg =250x250)
-![alt text](SubscriptionScreen.jpg =250x250)
-![alt text](Alert1.jpg =250x250)
-![alt text](Alert2.jpg =250x250)
+<img src="WelcomeScreen.jpg" alt="Welcome Screen" width="300">
+<img src="SubscriptionScreen.jpg" alt="Subscription Screen" width="300">
+<img src="Alert1.jpg" alt="Alert 1" width="300">
+<img src="Alert2.jpg" alt="Alert 2" width="300">
